@@ -1,0 +1,40 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;    
+    background: url(background1.jpg);
+    background-size: cover;
+    background-position: center;
+    background-color: #4158D0;
+    background-size: 110%;
+
+    
+    background-attachment: fixed;
+  
+    /* background-image: linear-gradient(225deg, #4158D0 0%, #C850C0 46%, #ffac00 100%);
+    background-repeat: no-repeat */
+}
+
+
+.contact-us{
+    width: 720px;
+    box-shadow: 0 0 25px 0 rgba(0,0,0,0.3);
+    background: #fff;
+    padding:20px;
+    margin: 8% auto 0;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.contact-us h1{
+    color: #1c8adb;
+    margin-bottom: 30px;
+}
+
+.contact-us a{
+    margin-left: 10px;
+    margin-right: 10px; 
+}
+
+  

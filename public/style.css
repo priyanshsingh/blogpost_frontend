@@ -1,0 +1,102 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;    
+    background: url(background1.jpg);
+    background-size: cover;
+    background-position: center;
+    background-color: #4158D0;
+    background-size: 110%;
+
+    
+    background-attachment: fixed;
+
+    
+    /* background-image: linear-gradient(225deg, #4158D0 0%, #C850C0 46%, #ffac00 100%);
+    background-repeat: no-repeat */
+}
+
+
+.sign-up-now{
+    width: 350px;
+    box-shadow: 0 0 25px 0 rgba(0,0,0,0.3);
+    background: #fff;
+    padding:20px;
+    margin: 8% auto 0;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.sign-up-now h1{
+    color: #1c8adb;
+    margin-bottom: 30px;
+}
+
+.input-box{
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 90%;
+    border: 1px solid #999;
+    outline: none;
+}
+
+.button {
+    display: inline-block;
+    border-radius: 10px;
+    background-color: #1c8adb;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+    width: 140px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 2px;
+  }
+  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+  .hr-style { 
+    height: 30px; 
+    border-style: solid; 
+    border-color: #8c8b8b; 
+    border-width: 1px 0 0 0; 
+    border-radius: 20px; 
+  } 
+  hr.style18:before { 
+    display: block; 
+    content: ""; 
+    height: 30px; 
+    margin-top: -31px; 
+    border-style: solid; 
+    border-color: #8c8b8b; 
+    border-width: 0 0 1px 0; 
+    border-radius: 20px; 
+  }
+  
