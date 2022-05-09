@@ -1,7 +1,21 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import BookIcon from "@mui/icons-material/Book";
+// import Box from "@mui/material/Box";
+// import Input from "@mui/material/Input";
+// import InputLabel from "@mui/material/InputLabel";
+// import InputAdornment from "@mui/material/InputAdornment";
+// import FormControl from "@mui/material/FormControl";
+// import TextField from "@mui/material/TextField";
+// import AccountCircle from "@mui/icons-material/AccountCircle";
+import Paper from '@mui/material/Paper';
+import InputBase from '@mui/material/InputBase';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+import DirectionsIcon from '@mui/icons-material/Directions';
 
 export default function Navbar(props) {
   return (
@@ -9,10 +23,9 @@ export default function Navbar(props) {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/" style={{ marginRight: "30px" }}>
-            <BookIcon
-              style={{ marginRight: "10px", color: "white" }}
-            />
+            <BookIcon style={{ marginRight: "10px", color: "white" }} />
             {props.title}
+            {/* <img src="logo.png" alt="" /> */}
           </Link>
           <button
             className="navbar-toggler"
@@ -28,7 +41,7 @@ export default function Navbar(props) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul
               className="navbar-nav me-auto mb-2 mb-lg-0"
-              style={{ marginTop: "20px", fontSize:'1rem' }}
+              style={{ marginTop: "20px", fontSize: "1rem" }}
             >
               <li className="nav-item">
                 <Link className="nav-link" to="login">
@@ -49,7 +62,7 @@ export default function Navbar(props) {
                 <br />
               </li>
             </ul>
-            <form className="d-flex">
+            {/* <form className="d-flex">
               <input
                 className="form-control me-2"
                 type="search"
@@ -59,7 +72,36 @@ export default function Navbar(props) {
               <button className="btn btn-outline-primary" type="submit">
                 Search
               </button>
-            </form>
+            </form> */}
+            <Paper
+              component="form"
+              sx={{
+                p: "2px 4px",
+                display: "flex",
+                alignItems: "center",
+                width: 400,
+              }}
+            >
+              <IconButton sx={{ p: "10px" }} aria-label="menu">
+                <MenuIcon />
+              </IconButton>
+              <InputBase
+                sx={{ ml: 1, flex: 1 }}
+                placeholder="Search Blog Post"
+                inputProps={{ "aria-label": "search google maps" }}
+              />
+              <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
+                <SearchIcon />
+              </IconButton>
+              <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+              <IconButton
+                color="primary"
+                sx={{ p: "10px" }}
+                aria-label="directions"
+              >
+                <DirectionsIcon />
+              </IconButton>
+            </Paper>
           </div>
         </div>
       </nav>

@@ -62,7 +62,7 @@ export default function SignUp() {
           <br />
           <br />
           <p>
-            Don't have an account ? <Link to='login'>Register</Link>
+            Don't have an account ? <Link to='/signup'>Register</Link>
           </p>
           <br />
         </form>

@@ -16,6 +16,7 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <>
+      {/* <Navbar/> */}
       <Navbar title = "Blog Post" style={{position:'fixed'}}/>
       <div className="App">
         <Routes>
@@ -23,6 +24,7 @@ function App() {
           <Route path="/login" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/footer" element={<Footer />} />
         </Routes>
       </div>
       <Footer />

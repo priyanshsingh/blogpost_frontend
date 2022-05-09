@@ -28,31 +28,56 @@ export default function About() {
         <a href={"https://www.facebook.com/"}>
           <FontAwesomeIcon
             icon={faFacebook}
-            style={{ color: "blue", fontSize: "2.5rem" }}
+            style={{
+              justifyContent: "right",
+              alignItems: "right",
+              width: "40px",
+              height: "40px",
+              transition: "all 0.2s",
+            }}
           />
         </a>
         <a href={"https://www.instagram.com/priyanshsingh_07/"}>
           <FontAwesomeIcon
+            color="error"
             icon={faInstagram}
-            style={{ color: "red", fontSize: "2.5rem" }}
+            style={{
+              justifyContent: "right",
+              alignItems: "right",
+              width: "40px",
+              height: "40px",
+              transition: "all 0.2s",
+            }}
           />
         </a>
         <a href={"https://www.github.com/priyanshsingh/"}>
           <FontAwesomeIcon
             icon={faGithub}
-            style={{ color: "black", fontSize: "2.5rem" }}
+            style={{
+              justifyContent: "right",
+              alignItems: "right",
+              width: "40px",
+              height: "40px",
+              transition: "all 0.2s",
+            }}
           />
         </a>
         <a href={"https://www.medium.com/"}>
           <FontAwesomeIcon
             icon={faMedium}
-            style={{ color: "grey", fontSize: "2.5rem" }}
+            style={{
+              justifyContent: "right",
+              alignItems: "right",
+              width: "40px",
+              height: "40px",
+              transition: "all 0.2s",
+            }}
           />
         </a>
       </div>
-      <br/>
-      <br/>
-      <br/>
+      <br />
+      <br />
+      <br />
     </>
   );
 }

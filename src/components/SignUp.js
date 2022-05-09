@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import GoogleButton from 'react-google-button';
-
+import GoogleButton from "react-google-button";
 
 export default function SignUp() {
   return (
@@ -19,8 +18,24 @@ export default function SignUp() {
             noValidate
             autoComplete="off"
           >
-            <TextField className="text_field_email" required label="E-Mail" style={{margin: '10px 0', width: '80%'}} />
-            <TextField className="text_field_email" required label="UserName" style={{margin: '10px 0', width: '80%'}} />
+            <TextField
+              className="text_field_email"
+              required
+              label="E-Mail"
+              style={{
+                margin: "10px 0",
+                width: "80%",
+              }}
+            />
+            <TextField
+              className="text_field_email"
+              required
+              label="UserName"
+              style={{
+                margin: "10px 0",
+                width: "80%",
+              }}
+            />
 
             <TextField
               className="text_field_pass"
@@ -28,7 +43,7 @@ export default function SignUp() {
               label="Password"
               type="password"
               autoComplete="current-password"
-              style={{margin: '10px 0', width: '80%'}}
+              style={{ margin: "10px 0", width: "80%" }}
             />
           </Box>
           <br />
@@ -50,9 +65,12 @@ export default function SignUp() {
           <br />
           <hr class="hr-style" />
           <p class="or">OR</p>
-          
-          <GoogleButton label="Register with Google" style={{marginLeft:'80px'}}/>
-          
+
+          <GoogleButton
+            label="Register with Google"
+            style={{ marginLeft: "80px" }}
+          />
+
           {/* <button type="button" class="signup-btn">
             Login with{" "}
             <img src="icon.png" alt="google icon" width="15px" height="15px" />
@@ -60,7 +78,7 @@ export default function SignUp() {
           <br />
           <br />
           <p>
-            Do you have an account ? <Link to="login">Login</Link>
+            Do you have an account ? <Link to="/login">Login</Link>
             <br />
           </p>
           <br />
