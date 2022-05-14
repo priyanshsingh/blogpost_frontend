@@ -9,9 +9,11 @@ import {
   faMedium,
 } from "@fortawesome/free-brands-svg-icons";
 
+
 export default function About() {
   return (
     <>
+     
       <div class="contact-us">
         <h1>Contact Us!</h1>
         <p>

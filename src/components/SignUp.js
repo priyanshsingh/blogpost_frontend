@@ -1,10 +1,64 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import GoogleButton from "react-google-button";
+import Checkbox from "@mui/material/Checkbox";
+
+const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 export default function SignUp() {
+  const navigate = useNavigate();
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    username: "",
+    password: "",
+  });
+
+  let name, value;
+
+  const handleInputs = (e) => {
+    console.log(e);
+    name = e.target.name;
+    value = e.target.value;
+
+    setUser({ ...user, [name]: value });
+  };
+
+  const PostData = async (e) => {
+    e.preventDefault();
+    const { firstName, lastName, email, username, password } = user;
+
+    const res = await fetch("/local/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        firstName: firstName,
+        lastName: lastName,
+        username: username,
+        password: password,
+        email: email,
+      }),
+    });
+
+    const data = await res.json();
+    if (data.status === 403 || !data) {
+      window.alert("Invalid Registration");
+      console.log("Invalid Reg of User");
+    } else {
+      window.alert("Registration Successful");
+      console.log("Reg of User done");
+
+      navigate("/login");
+    }
+  };
+
   return (
     <>
       <div class="sign-up-now">
@@ -19,27 +73,50 @@ export default function SignUp() {
             autoComplete="off"
           >
             <TextField
+              value={user.firstName}
+              onChange={handleInputs}
+              name="firstName"
+              className="text_field_email"
+              required
+              label="FirstName"
+              style={{ margin: "10px 0", width: "80%" }}
+            />
+            <TextField
+              value={user.lastName}
+              onChange={handleInputs}
+              name="lastName"
+              className="text_field_email"
+              required
+              label="LastName"
+              style={{ margin: "10px 0", width: "80%" }}
+            />
+
+            <TextField
+              value={user.email}
+              onChange={handleInputs}
+              name="email"
               className="text_field_email"
               required
               label="E-Mail"
-              style={{
-                margin: "10px 0",
-                width: "80%",
-              }}
+              style={{ margin: "10px 0", width: "80%" }}
             />
+
             <TextField
+              value={user.username}
+              onChange={handleInputs}
+              name="username"
               className="text_field_email"
               required
               label="UserName"
-              style={{
-                margin: "10px 0",
-                width: "80%",
-              }}
+              style={{ margin: "10px 0", width: "80%" }}
             />
 
             <TextField
               className="text_field_pass"
               required
+              value={user.password}
+              onChange={handleInputs}
+              name="password"
               label="Password"
               type="password"
               autoComplete="current-password"
@@ -47,34 +124,36 @@ export default function SignUp() {
             />
           </Box>
           <br />
-          {/* 
-          <input type="email" class="input-box" placeholder="E-Mail" />
-          <input type="text" class="input-box" placeholder="Username" />
-          <input type="password" class="input-box" placeholder="Password" /> */}
-          <p>
-            <span>
-              <input type="checkbox" />
-            </span>{" "}
-            I agree the terms of privacy policy
-          </p>
-          <button class="button">
-            <span>Register</span>
+          <Checkbox
+            {...label}
+            defaultUnChecked
+            color="primary"
+            size="small"
+            style={{ marginBottom: "3px" }}
+          />
+          I agree the company's Privacy Policy and TNC
+          <br />
+          <button
+            className="button"
+            type="submit"
+            variant="contained"
+            size="large"
+            style={{
+              fontSize: "1.1rem",
+              marginTop: "10px",
+              marginBottom: "10px",
+            }}
+            onClick={PostData}
+          >
+            <span>Sign In</span>
           </button>
-          {/* <button type="button" class="signup-btn">Sign Up</button> */}
           <br />
           <br />
           <hr class="hr-style" />
           <p class="or">OR</p>
-
-          <GoogleButton
-            label="Register with Google"
-            style={{ marginLeft: "80px" }}
-          />
-
-          {/* <button type="button" class="signup-btn">
-            Login with{" "}
-            <img src="icon.png" alt="google icon" width="15px" height="15px" />
-          </button> */}
+          <a href="http://localhost:4000/auth/google" style={{textDecoration:'none'}}>
+            <GoogleButton style={{ marginLeft: "80px"}} />
+          </a>
           <br />
           <br />
           <p>

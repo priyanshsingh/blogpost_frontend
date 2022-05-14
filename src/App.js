@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import Home from './components/Home';
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Write from "./components/Write";
 
 // import About from "./components/Contact";
 // import Hello from "./components/material_ui_components/Hello";
@@ -25,6 +26,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/footer" element={<Footer />} />
+          <Route path="/write" element={<Write />} />
         </Routes>
       </div>
       <Footer />

@@ -2,13 +2,6 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import BookIcon from "@mui/icons-material/Book";
-// import Box from "@mui/material/Box";
-// import Input from "@mui/material/Input";
-// import InputLabel from "@mui/material/InputLabel";
-// import InputAdornment from "@mui/material/InputAdornment";
-// import FormControl from "@mui/material/FormControl";
-// import TextField from "@mui/material/TextField";
-// import AccountCircle from "@mui/icons-material/AccountCircle";
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
@@ -43,6 +36,12 @@ export default function Navbar(props) {
               className="navbar-nav me-auto mb-2 mb-lg-0"
               style={{ marginTop: "20px", fontSize: "1rem" }}
             >
+              <li className="nav-item">
+                <Link className="nav-link" to="write">
+                  <strong>Write A Blog</strong>
+                </Link>
+                <br />
+              </li>
               <li className="nav-item">
                 <Link className="nav-link" to="login">
                   Login
