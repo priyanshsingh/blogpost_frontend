@@ -8,9 +8,30 @@ import Typography from "@material-ui/core/Typography";
 import { useState } from "react";
 export default function MultilineTextFields() {
 
-  const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
+  const [title, setTitle] = useState('random title')
+  const [content, setContent] = useState('random content')
   
+  const postBlog = async (e)=>{
+    e.preventDefault()
+    console.log('entered post blog')
+    const token = localStorage.getItem('Authorization')
+    if(title.trim().length !== 0 && content.trim().length !== 0){
+      await fetch("/addBlog", {
+        method: "PATCH",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          "Authorization": token
+        },
+        body: JSON.stringify({blog:{
+          title: title,
+          content: content
+        }})
+      })
+    }else{
+      window.alert('title and content cannot be empty')
+    }
+  }
 
 
   return (
@@ -83,6 +104,7 @@ export default function MultilineTextFields() {
             style={{
               marginBottom: "50px",
             }}
+            onClick={postBlog}
           >
             POST
           </Button>

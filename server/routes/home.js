@@ -14,7 +14,7 @@ router.get('/blogs', utils.validateLogin, async (req, res, next)=>{
                 }
             }
         }
-
+        // console.log(`data in home.js is ${data}`)
         return res.status(200).json({success: true, message: "blogs fetched successfully", blogs: blogs})
     })
     .catch(err => {
@@ -23,7 +23,7 @@ router.get('/blogs', utils.validateLogin, async (req, res, next)=>{
     })
 })
 
-/*
+
 router.get('/', (req, res, next)=>{
     User.find({})
     .then(data => {
@@ -33,11 +33,12 @@ router.get('/', (req, res, next)=>{
         res.status(400).json({success: false})
     })
 })
-*/
+
 
 router.patch('/addBlog', utils.validateLogin, async (req, res, next)=>{
     const blog = req.body.blog
     const id = req.jwt.sub
+    console.log(`id is ${id}, blog is ${blog}`)
     await User.updateOne({ _id: id },
         {
             $push : {
@@ -45,6 +46,7 @@ router.patch('/addBlog', utils.validateLogin, async (req, res, next)=>{
             }
         })
         .then(data=>{
+            console.log(`data saved, data:${data}`)
             return res.send(data)
         })
         .catch(err=>{
