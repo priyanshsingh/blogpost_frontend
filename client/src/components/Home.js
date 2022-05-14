@@ -39,8 +39,11 @@ const Home = () => {
         "Authorization": token
       }
     })
-      .then(response => {console.log(`response is ${response} status is ${response.status}`);  response.json()})
-      .then(json => { console.log(`json is ${json.blogs}`) })
+      .then(response => 
+        // console.log(`response is ${response} status is ${response.status}`);
+        response.json()
+      )
+      .then(json => { console.log(`json is ${json.blogs[0].blogs[0].title}`) })
   }
 
   extractData()
