@@ -5,8 +5,14 @@ import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
-
+import { useState } from "react";
 export default function MultilineTextFields() {
+
+  const [title, setTitle] = useState('')
+  const [content, setContent] = useState('')
+  
+
+
   return (
     <Box
       component="form"
@@ -29,6 +35,8 @@ export default function MultilineTextFields() {
         </Typography>
         <TextField
           id="standard-basic"
+          value={title}
+          onChange={(e)=>{setTitle(e.target.value)}}
           label="Title here..."
           placeholder="Type!"
           variant="standard"
@@ -50,6 +58,8 @@ export default function MultilineTextFields() {
       <div className="container">
         <TextField
           id="filled-textarea"
+          value={content}
+          onChange={(e)=>{setContent(e.target.value)}}
           label="Your Content here..."
           placeholder="Type!"
           multiline
