@@ -12,11 +12,11 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 export default function SignUp() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    username: "",
-    password: "",
+    firstName: "nitin",
+    lastName: "juneja",
+    email: "nitin@gmail.com",
+    username: "nitin",
+    password: "123",
   });
 
   let name, value;
@@ -31,9 +31,10 @@ export default function SignUp() {
 
   const PostData = async (e) => {
     e.preventDefault();
+
     const { firstName, lastName, email, username, password } = user;
 
-    const res = await fetch("/local/register", {
+    await fetch("/local/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,22 +42,27 @@ export default function SignUp() {
       body: JSON.stringify({
         firstName: firstName,
         lastName: lastName,
-        username: username,
         password: password,
         email: email,
       }),
-    });
+    })
+    .then(data => {
+      if (data.status === 409 || !data) {
+        window.alert("username already exists");
+        console.log("Invalid Reg of User");
+      } else if(data.status === 422){
+        windows.alert("unable to register user")
+      }else if (data.status === 201){
+        console.log(`credentials verified`)
+        navigate("/login")
+      }
+    })
+    .catch(err => {
 
-    const data = await res.json();
-    if (data.status === 403 || !data) {
-      window.alert("Invalid Registration");
-      console.log("Invalid Reg of User");
-    } else {
-      window.alert("Registration Successful");
-      console.log("Reg of User done");
+    })
 
-      navigate("/login");
-    }
+    
+   
   };
 
   return (

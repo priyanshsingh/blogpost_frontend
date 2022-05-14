@@ -28,6 +28,23 @@ const Cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const Home = () => {
   // const classes = useStyles();
 
+  const extractData = async () => {
+    const token = localStorage.getItem("Authorization")
+    console.log(`token is ${token}`)
+    await fetch("/blogs", {
+      method: "GET",
+      headers: {
+        // 'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        "Authorization": token
+      }
+    })
+      .then(response => {console.log(`response is ${response} status is ${response.status}`);  response.json()})
+      .then(json => { console.log(`json is ${json.blogs}`) })
+  }
+
+  extractData()
+
   return (
     <>
       <CssBaseline />
@@ -58,7 +75,7 @@ const Home = () => {
               style={{ marginTop: "20px" }}
             >
               <Grid item>
-                <a href="http://localhost:3005" style={{textDecoration:'none'}}>
+                <a href="http://localhost:3005" style={{ textDecoration: 'none' }}>
                   <Button
                     variant="contained"
                     color="Primary"

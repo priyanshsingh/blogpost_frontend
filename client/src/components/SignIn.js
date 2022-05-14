@@ -8,35 +8,53 @@ import "./style.css";
 import { Link } from "react-router-dom";
 
 export default function SignUp() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("jatin3@gmail.com");
+  const [password, setPassword] = useState("123");
 
   const navigate = useNavigate();
 
   const loginUser = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
     console.log(`event fired`);
     // if(email.trim().length !== 0 && password.trim().length !== 0){
-    const res = await fetch("/local/login", {
+    await fetch("/local/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         password: password,
-        username: email,
+        email: email,
       }),
     })
-      .then((data) => {
-        console.log(`data is ${data}  token is ${data.token}`);
-      })
+      .then((response) => {
+        console.log(`response is ${response.status}`);
+        const statusCode = response.status
+        if(statusCode === 200){
+          response.json()
+          .then(json => {
+            // console.log(`json data is ${json.token}`)
+            localStorage.setItem('Authorization', json.token)
+            navigate("/")
+          })
+          .catch(err => 
+            {
+              console.log(`error occred: ${err}`)
+            }
+            )
+          }
+        else if(statusCode === 401){
+          window.alert('invalid credentials')
+        }else if(statusCode === 500){
+          //TODO: Complete this if statement
+        }
+        })
       .catch((err) => {
         console.log(`error is ${err.message}`);
       });
-    console.log(`res is ${res}`);
     // }
 
-    navigate("/");
+    // navigate("/");
   };
 
   return (
