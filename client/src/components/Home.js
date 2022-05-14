@@ -10,6 +10,7 @@ import {
   Container,
   CssBaseline,
 } from "@material-ui/core";
+import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 // import { shadows } from '@mui/system';
 // import { PhotoCamera } from '@material-ui/icons';
@@ -27,10 +28,12 @@ const Cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const Home = () => {
   // const classes = useStyles();
+  const navigate = useNavigate();
 
   const extractData = async () => {
     const token = localStorage.getItem("Authorization")
     console.log(`token is ${token}`)
+    // else{
     await fetch("/blogs", {
       method: "GET",
       headers: {
@@ -41,12 +44,23 @@ const Home = () => {
     })
       .then(response => 
         // console.log(`response is ${response} status is ${response.status}`);
-        response.json()
+        
+        {
+          if(response.status === 401){
+            navigate("/login")
+          }else{
+            response.json()
+            .then(json => { 
+              console.log(`json is ${json.blogs[0].title}`) 
+            })
+          }
+        }
       )
       // .then(json => { console.log(`json is ${json.blogs[0].blogs[0].title}`) })
-      .then(json => { console.log(`json is ${json.blogs[0].title}`) })
+      
+    // }
   }
-
+  // navigateOrNot()
   extractData()
 
   return (
