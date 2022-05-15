@@ -29,7 +29,12 @@ const UserSchema = new mongoose.Schema({
     },
     blogs: [{   
         type: blog,
-    }]
+    }],
+    googleId: {
+        type: String,
+        required: false,
+        unique: true
+    }
 })
 
 mongoose.model('User', UserSchema)

@@ -18,7 +18,7 @@ function validateLogin(req, res, next) {
                 })
                 console.log('verification is ', verification)
                 req.jwt = verification;
-                req.isAuthenticated = () => { return true }
+                // req.isAuthenticated = () => { return true }
                 next()
             } catch (error) {
                 console.log('error occured', error.message)
@@ -29,6 +29,9 @@ function validateLogin(req, res, next) {
         }
     }
     catch (err) {
+        if(req.isAuthenticated()){
+            next()
+        }
         return res.status(401).json({success: false})
     }
 }

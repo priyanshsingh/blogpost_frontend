@@ -29,7 +29,7 @@ const Cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const Home = () => {
   // const classes = useStyles();
   const navigate = useNavigate();
-
+  
   const extractData = async () => {
     const token = localStorage.getItem("Authorization")
     console.log(`token is ${token}`)

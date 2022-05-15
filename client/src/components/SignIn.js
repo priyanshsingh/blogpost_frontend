@@ -103,7 +103,7 @@ export default function SignUp() {
           <hr className="hr-style" />
           <p className="or">OR</p>
 
-          <GoogleButton style={{ marginLeft: "80px" }} />
+          <GoogleButton style={{ marginLeft: "80px" }} onClick={(e)=>{e.preventDefault(); window.open("http://localhost:4000/auth/google")}}/>
 
           <br />
           <br />
