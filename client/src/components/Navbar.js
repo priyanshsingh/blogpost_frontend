@@ -9,8 +9,10 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import DirectionsIcon from '@mui/icons-material/Directions';
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar(props) {
+  const navigate = useNavigate();
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -60,8 +62,27 @@ export default function Navbar(props) {
                 </Link>
                 <br />
               </li>
-              <li style={{marginLeft:'370px' }} >
-                <Link className="nav-link" to="login">
+              <li style={{ marginLeft: '370px' }} >
+                <Link className="nav-link" to="login" onClick={
+                  async (e)=>{
+                    e.preventDefault()
+                    localStorage.removeItem('Authorization')
+                    await fetch("/logout", {
+                      method: "DELETE"
+                    })
+                    .then(response => {
+                      if(response.status === 204){
+                        navigate("/login")
+                      }
+                      else if(response.status === 500){
+                        window.alert("logout was not successfull, try again")
+                      }
+                    })
+                    .catch(err => {
+                        console.log(`Navbar.js: error occured while logging out user, err message: ${err.message},\nerr: ${err}`)
+                    })
+                  }                  
+                }>
                   LogOut
                 </Link>
                 <br />

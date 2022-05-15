@@ -54,4 +54,15 @@ router.patch('/addBlog', utils.validateLogin, async (req, res, next)=>{
         })
 })
 
+router.delete("/logout", (req, res, next)=>{
+    try{
+        req.logOut()
+        return res.status(204).json({success: true, message: "user logged out successfully"})
+    }
+    catch(err){
+        console.log(`home.js: unable to logout user, err message: ${err.message}\nerror: ${err}`)
+        return res.status(500).json({success: "false", message: "unable to logout user, please try again"})
+    }
+})
+
 module.exports = router

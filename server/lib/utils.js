@@ -24,14 +24,18 @@ function validateLogin(req, res, next) {
                 console.log('error occured', error.message)
                 return res.status(401).json({ success: false, msg: "you are not authorized to visit this route" });
             }
-        } else {
+        } else if(req.isAuthenticated()){
+            console.log(`utils.js: value of isAuthenticated is ${req.isAuthenticated()}`)
+            next()
+        }else{
             return res.status(401).json({success: false})
         }
     }
     catch (err) {
-        // if(req.isAuthenticated()){
-        //     next()
-        // }
+        console.log(`utils.js: value of isAuthenticated is ${req.isAuthenticated()}`)
+        if(req.isAuthenticated()){
+            next()
+        }
         return res.status(401).json({success: false})
     }
 }
