@@ -24,15 +24,15 @@ router.get('/blogs', utils.validateLogin, async (req, res, next)=>{
 })
 
 
-router.get('/', (req, res, next)=>{
-    User.find({})
-    .then(data => {
-        res.status(200).json({success: false, data: data})
-    })
-    .catch(err => {
-        res.status(400).json({success: false})
-    })
-})
+// router.get('/', (req, res, next)=>{
+//     User.find({})
+//     .then(data => {
+//         res.status(200).json({success: false, data: data})
+//     })
+//     .catch(err => {
+//         res.status(400).json({success: false})
+//     })
+// })
 
 
 router.patch('/addBlog', utils.validateLogin, async (req, res, next)=>{

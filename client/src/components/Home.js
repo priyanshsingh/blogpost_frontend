@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Typography,
   Card,
@@ -25,16 +25,16 @@ import { useNavigate } from "react-router-dom";
 // }));
 
 const Cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 const Home = () => {
   // const classes = useStyles();
   const navigate = useNavigate();
+  let [blogs, setBlogs]= useState([{title: '', content: ''}])
   
   const extractData = async () => {
     const token = localStorage.getItem("Authorization")
     console.log(`token is ${token}`)
     // else{
-    await fetch("/blogs", {
+    useEffect(()=>{fetch("/blogs", {
       method: "GET",
       headers: {
         // 'Content-Type': 'application/json',
@@ -43,25 +43,28 @@ const Home = () => {
       }
     })
       .then(response => 
-        // console.log(`response is ${response} status is ${response.status}`);
-        
         {
           if(response.status === 401){
             navigate("/login")
           }else{
             response.json()
             .then(json => { 
-              console.log(`json is ${json.blogs[0].title}`) 
+              // blogs = json.blogs
+              blogs = json.blogs
+              console.log(`Home.js: blogs are ${blogs}`)
+              setBlogs(blogs)
+              // console.log(`json is ${json.blogs[0].title}`) 
             })
           }
         }
-      )
+      )}, [])
       // .then(json => { console.log(`json is ${json.blogs[0].blogs[0].title}`) })
       
     // }
   }
   // navigateOrNot()
-  extractData()
+ extractData()
+ console.log(`blogs are ${blogs}, blogLength is ${blogs.length}, blog[0].title is ${blogs[0].title}`)
 
   return (
     <>
@@ -93,7 +96,7 @@ const Home = () => {
               style={{ marginTop: "20px" }}
             >
               <Grid item>
-                <a href="http://localhost:3005" style={{ textDecoration: 'none' }}>
+                <a href="http://localhost:3000" style={{ textDecoration: 'none' }}>
                   <Button
                     variant="contained"
                     color="Primary"
@@ -119,8 +122,8 @@ const Home = () => {
       </div>
       <Container maxWidth="md" style={{ padding: "50px 0" }}>
         <Grid container spacing={4}>
-          {Cards.map((card) => (
-            <Grid item key={card} xs={12} sm={6} md={4}>
+          {blogs.map((blog) => (
+            <Grid item key={blog} xs={12} sm={6} md={4}>
               <Card
                 style={{
                   height: "100%",
@@ -129,6 +132,7 @@ const Home = () => {
                   borderRadius: "18px",
                   boxShadow: "rgba(0, 0, 0, 0.24) 3px 7px 12px",
                 }}
+                
               >
                 <CardMedia
                   image="https://source.unsplash.com/random"
@@ -137,11 +141,10 @@ const Home = () => {
                 />
                 <CardContent style={{ flexGrow: 1 }}>
                   <Typography gutterBottom variant="h5">
-                    Heading
+                    {blog.title}
                   </Typography>
                   <Typography>
-                    This is a media card. You can use it to describe the
-                    content.
+                    {blog.content}
                   </Typography>
                 </CardContent>
                 <CardActions>
