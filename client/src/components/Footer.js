@@ -60,7 +60,7 @@ export default function Footer() {
                 </Box>
                 <Box>
                   <a
-                    href="http://localhost:3005/login"
+                    href="http://localhost:3000/login"
                     style={{
                       textDecoration: "none",
                       color: "inherit",
@@ -72,7 +72,7 @@ export default function Footer() {
                 </Box>
                 <Box>
                   <a
-                    href="http://localhost:3005/signup"
+                    href="http://localhost:3000/signup"
                     style={{
                       textDecoration: "none",
                       color: "inherit",

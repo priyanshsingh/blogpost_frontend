@@ -60,6 +60,12 @@ export default function Navbar(props) {
                 </Link>
                 <br />
               </li>
+              <li style={{marginLeft:'370px' }} >
+                <Link className="nav-link" to="login">
+                  LogOut
+                </Link>
+                <br />
+              </li>
             </ul>
             {/* <form className="d-flex">
               <input

@@ -29,9 +29,9 @@ function validateLogin(req, res, next) {
         }
     }
     catch (err) {
-        if(req.isAuthenticated()){
-            next()
-        }
+        // if(req.isAuthenticated()){
+        //     next()
+        // }
         return res.status(401).json({success: false})
     }
 }

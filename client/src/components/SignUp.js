@@ -7,6 +7,7 @@ import TextField from "@mui/material/TextField";
 import GoogleButton from "react-google-button";
 import Checkbox from "@mui/material/Checkbox";
 
+
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 export default function SignUp() {
@@ -51,7 +52,7 @@ export default function SignUp() {
         window.alert("username already exists");
         console.log("Invalid Reg of User");
       } else if(data.status === 422){
-        windows.alert("unable to register user")
+        window.alert("unable to register user")
       }else if (data.status === 201){
         console.log(`credentials verified`)
         navigate("/login")
