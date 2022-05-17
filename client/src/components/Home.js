@@ -132,7 +132,6 @@ const Home = () => {
                   borderRadius: "18px",
                   boxShadow: "rgba(0, 0, 0, 0.24) 3px 7px 12px",
                 }}
-                
               >
                 <CardMedia
                   image="https://source.unsplash.com/random"
@@ -140,7 +139,7 @@ const Home = () => {
                   style={{ paddingTop: "56.25%" }}
                 />
                 <CardContent style={{ flexGrow: 1 }}>
-                  <Typography gutterBottom variant="h5">
+                  <Typography gutterBottom variant="h5" >
                     {blog.title}
                   </Typography>
                   <Typography>

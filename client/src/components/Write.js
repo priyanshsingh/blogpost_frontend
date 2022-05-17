@@ -6,11 +6,12 @@ import SendIcon from "@mui/icons-material/Send";
 import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 export default function MultilineTextFields() {
 
   const [title, setTitle] = useState('random title')
   const [content, setContent] = useState('random content')
-  
+  const navigation = useNavigate()
   const postBlog = async (e)=>{
     e.preventDefault()
     console.log('entered post blog')
@@ -31,6 +32,7 @@ export default function MultilineTextFields() {
     }else{
       window.alert('title and content cannot be empty')
     }
+    navigation("/")
   }
 
 
