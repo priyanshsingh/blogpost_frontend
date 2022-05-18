@@ -9,8 +9,6 @@ require('dotenv').config()
 const passport = require('passport')
 const strategy = require('./config/passport').strategy
 
-
-
 const port = process.env.PORT_NUMBER
 const app = express()
 
