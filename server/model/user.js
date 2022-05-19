@@ -32,7 +32,6 @@ const UserSchema = new mongoose.Schema({
     }],
     googleId: {
         type: String,
-        default: null,
     }
 })
 
