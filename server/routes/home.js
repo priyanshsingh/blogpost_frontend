@@ -54,6 +54,34 @@ router.patch('/addBlog', utils.validateLogin, async (req, res, next)=>{
         })
 })
 
+router.get("/add", async (req, res, next)=>{
+    const password = "thisispass"
+    const hashSalt = utils.genPassword(password)
+    const hash = hashSalt.hash
+    const salt = hashSalt.salt
+    const newUser = {
+        firstName: "tavishi",
+        lastName: "vemuri",
+        email: "tavishivemuri1234@gmail.com",
+        hash: hash,
+        salt: salt
+    }
+    const userToSave = new User(newUser)
+    await userToSave.save()
+        .then(data => {
+            console.log(`user saved, data returned: ${data}`)
+            return res.status(201).json({success: true, message: "user registered successfully"})
+        })
+        .catch(err => {
+            console.log(`error occured while saving user, error message: ${err.message}, error: ${err}`)
+            return res.status(422).json({success: false, message: "unable to register user"})
+        })
+    .catch(err => {
+        console.log(`error occured, error message: ${err.message},\nerror ${err}`)
+        return res.status(422).json({success: "false", message: "unable to register user, please try again"})
+    })
+})
+
 router.delete("/logout", (req, res, next)=>{
     try{
         req.logOut()
